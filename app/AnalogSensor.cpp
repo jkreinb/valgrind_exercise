@@ -16,7 +16,7 @@ double AnalogSensor::Read()
     std::vector<int> *readings = new std::vector<int>(mSamples, 10);
 
     double result = std::accumulate( readings->begin(), readings->end(), 0.0 ) / readings->size();
-    delete readings;
+    delete readings; // Need to delete pointer to stop mem leak, or use smart pointers
     return result;
 }
 
